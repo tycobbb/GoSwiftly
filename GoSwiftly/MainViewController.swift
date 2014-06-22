@@ -12,18 +12,23 @@ class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+                
+        User.fetch {
+            users, error in
+        }
         
-        User.fetch({
-            (users: Model[]?, error: NSError?) in
-        })
+        let messageText = [ "GO", "YO", "WHOA" ].random()
         
-        Message.subscribe()
-        
-        Message.insert(attributes: [
-            "text" : "GO"
-        ], handler: {
-            (messages: Model[]?, error: NSError?) in
-        })
+//        Message.subscribe(handler: {
+//            subscriptionID, error in
+////            if let validError = error {
+////                Message.unsubscribe(subscriptionID)
+////            } else {
+//                Message.insert(attributes: [ "text" : messageText ], handler: {
+//                    messages, error in
+//                })
+////            }
+//        })
     }
     
 }

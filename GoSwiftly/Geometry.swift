@@ -37,6 +37,18 @@ extension CGSize {
 }
 
 //
+// CGRect
+//
+
+extension CGRect {
+    
+    func center() -> CGPoint {
+        return CGPoint(x: origin.x + size.width / 2.0, y: origin.y + size.height / 2.0)
+    }
+    
+}
+
+//
 // CGPoint
 //
 

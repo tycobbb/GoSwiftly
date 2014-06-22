@@ -8,20 +8,18 @@
 
 import UIKit
 
-class MessagesViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class MessagesViewController : UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     @IBOutlet var collectionView : UICollectionView
     
     var messages : Array<Message> = [] {
-        didSet {
-            self.collectionView?.reloadData()
-        }
+        didSet { self.collectionView?.reloadData() }
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.messages = [ "GO", "BRO", "NOT" ].map({
+        self.messages = [ "GO", "YO", "SLOW" ].map({
             text in Message(text: text)
         }).sample(30)
     }
@@ -35,8 +33,8 @@ class MessagesViewController: UIViewController, UICollectionViewDataSource, UICo
     }
     
     func collectionView(collectionView: UICollectionView!, cellForItemAtIndexPath indexPath: NSIndexPath!) -> UICollectionViewCell! {
-        let identifier = MessageCollectionViewCell.identifier()
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(identifier, forIndexPath: indexPath) as MessageCollectionViewCell
+        let identifier = MessagesCollectionViewCell.identifier()
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(identifier, forIndexPath: indexPath) as MessagesCollectionViewCell
         cell.updateWithModel(self.messageAtIndexPath(indexPath))
         return cell
     }

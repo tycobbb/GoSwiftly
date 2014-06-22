@@ -14,7 +14,23 @@ import CloudKit
     var window: UIWindow?
 
     func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
+        
+        let notificationSettings = UIUserNotificationSettings(forTypes: .Badge | .Sound | .Alert, categories: nil)
+        application.registerUserNotificationSettings(notificationSettings)
         application.registerForRemoteNotifications()
+
+        CKContainer.defaultContainer().requestApplicationPermission(.PermissionUserDiscoverability) {
+            status, error in
+            println("application permission: \(status) error: \(error?.localizedDescription)")
+        }
+        
+        CKContainer.defaultContainer().accountStatusWithCompletionHandler {
+            status, error in
+            println("account status: \(status) error: \(error?.localizedDescription)")
+        }
+        
+        Records.singleton.adapater = ParseAdapter()
+        
         return true
     }
     
@@ -23,20 +39,20 @@ import CloudKit
     //
     
     func application(application: UIApplication!, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings!) {
-        
+    
     }
     
     func application(application: UIApplication!, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData!) {
-        
+
     }
     
     func application(application: UIApplication!, didFailToRegisterForRemoteNotificationsWithError error: NSError!) {
-        
+
     }
     
     func application(application: UIApplication!, didReceiveRemoteNotification userInfo: NSDictionary!) {
         var notification = CKNotification(fromRemoteNotificationDictionary: userInfo)
-        println(notification)
+        println("notification: \(notification)")
     }
 
 }

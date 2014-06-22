@@ -29,18 +29,12 @@ extension CKRecord {
         // update the record with the passed in attributes, if any
         record.setValuesForKeysWithDictionary(attributes)
         
-        println("RECORD - will insert: \(record)")
-        
+        println("RECORD - will insert: \(record)\n")
         // save the record to the public database
         CKContainer.defaultContainer().publicCloudDatabase.saveRecord(record) {
             record, error in
             
-            println("RECORD - did insert: \(record)")
-
-            if(error) {
-                println("RECORD - ERROR: \(error)")
-            }
-            
+            println("RECORD - did insert: \(record)\n\t\(error?.localizedDescription)")
             // callback the consumer's handler, if it exists
             handler?(record, error)
         }
@@ -52,16 +46,17 @@ extension CKRecord {
 // Subscriptions
 //
 
-typealias CKSubscriptionHandler = (CKSubscription?, NSError?) -> Void
+typealias CKSubscriptionHandler   = (CKSubscription!, NSError!) -> Void
+typealias CKUnsubscriptionHandler = (String!, NSError!) -> Void
 
 extension CKSubscription {
     
     class func defaultOptions() -> CKSubscriptionOptions {
-        return .ThisClientOnly | .FiresOnRecordCreation | .FiresOnRecordDeletion | .FiresOnRecordUpdate
+        return .FiresOnRecordCreation | .FiresOnRecordDeletion | .FiresOnRecordUpdate
     }
     
     class func subcribe(recordType: String, predicate: NSPredicate!, options: CKSubscriptionOptions! = CKSubscription.defaultOptions(), handler: CKSubscriptionHandler?) -> String! {
-        
+                                                  
         let subscription     = CKSubscription(recordType: recordType, predicate: predicate, options: options)
         let notificationInfo = CKNotificationInfo()
         
@@ -70,11 +65,21 @@ extension CKSubscription {
         
         CKContainer.defaultContainer().publicCloudDatabase.saveSubscription(subscription) {
             subscription, error in
-            println("did finish subscription\n\tsubscription: \(subscription)\n\terror: \(error)")
-            handler?(subscription, error)
+            NSOperationQueue.mainQueue().addOperationWithBlock {
+                println("SUBSCRIBE - did finish: \(subscription)\n\terror: \(error)")
+                handler?(subscription, error)
+            }
         }
         
         return subscription.subscriptionID
+    }
+    
+    class func unsubscribe(recordType: String, predicate: NSPredicate!, handler: CKUnsubscriptionHandler?) {
+        CKContainer.defaultContainer().publicCloudDatabase.deleteSubscriptionWithID(recordType) {
+            subscriptionID, error in
+            println("UNSUBSCRIBE - did finish: \(subscriptionID)\n\terror: \(error)")
+            handler?(subscriptionID, error)
+        }
     }
     
 }

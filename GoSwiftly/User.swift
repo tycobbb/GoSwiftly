@@ -12,11 +12,20 @@ class User : Model {
    
     class func fetch(handler: FetchHandler?) {
         
-        println("CONTACTS: start")
-        CKDiscoverAllContactsOperation.start({ userInfos, error in
-            println("CONTACTS: complete\n\tuser-infos: \(userInfos)\n\terror: \(error)")
-            handler?(model: nil, error: error)
-        })
+        CKContainer.defaultContainer().discoverAllContactUserInfosWithCompletionHandler {
+            responseInfos, error in
+            
+            println("contacts")
+            let userInfos = responseInfos as CKDiscoveredUserInfo[]
+            let users = userInfos.map({
+                userInfo -> CKDiscoveredUserInfo in
+                println("\t\(userInfo.firstName) \(userInfo.lastName)")
+                return userInfo
+            })
+            println("\n")
+
+        }
+        
     }
     
     override class func recordType() -> RecordType {
