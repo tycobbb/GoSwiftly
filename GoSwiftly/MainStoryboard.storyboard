@@ -62,9 +62,6 @@
                             <collectionView appearanceType="aqua" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="VMz-AV-B3G">
                                 <rect key="frame" x="90" y="0.0" width="140" height="568"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="568" id="Y3O-hB-HRJ"/>
-                                </constraints>
                                 <collectionViewLayout key="collectionViewLayout" id="24p-As-4kC" customClass="MessagesCollectionViewLayout"/>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MessagesCollectionViewCell" id="woH-81-u9C" customClass="MessagesCollectionViewCell" customModule="GoSwiftly" customModuleProvider="target">
@@ -88,6 +85,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="MPC-xk-3t7" firstAttribute="top" secondItem="VMz-AV-B3G" secondAttribute="bottom" id="6cK-3R-24l"/>
                             <constraint firstAttribute="trailing" secondItem="VMz-AV-B3G" secondAttribute="trailing" constant="90" id="CXd-KS-Z0W"/>
                             <constraint firstItem="VMz-AV-B3G" firstAttribute="leading" secondItem="Yzi-1A-f2U" secondAttribute="leading" constant="90" id="MJl-WB-Quv"/>
                             <constraint firstItem="VMz-AV-B3G" firstAttribute="top" secondItem="FC9-ap-4Bh" secondAttribute="bottom" id="m3B-db-KnA"/>

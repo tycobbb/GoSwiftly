@@ -1,3 +1,3 @@
 
-pod 'Parse', '~> 1.2'
+pod 'Parse', '1.2.19'
 

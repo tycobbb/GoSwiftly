@@ -6,7 +6,7 @@ PODS:
     - Facebook-iOS-SDK (~> 3.11)
 
 DEPENDENCIES:
-  - Parse (~> 1.2)
+  - Parse (= 1.2.19)
 
 SPEC CHECKSUMS:
   Bolts: 91c2af8eae1d44e1dd75946a5b0ae04a43ea43e4

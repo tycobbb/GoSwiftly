@@ -9,33 +9,37 @@
 import UIKit
 import CloudKit
 
-typealias FetchHandler     = (model: Model[]?, error: NSError?) -> Void
-typealias CreateHandler    = (model: Model[]?, error: NSError?) -> Void
-typealias SubscribeHandler = (subscriptionID: String?, error: NSError?) -> Void
+typealias ModelsHandler    = (Model[]?, NSError?) -> Void
+typealias SubscribeHandler = (String?, NSError?) -> Void
 
-@objc protocol AbstractModel {
-    @optional class func fetch(handler: FetchHandler?)
-}
-
-class Model : NSObject, AbstractModel {
+class Model : NSObject {
     
-    class func insert(attributes: Dictionary<String, AnyObject>? = nil, handler: CreateHandler?) {
+    class func insert(attributes: Dictionary<String, AnyObject>? = nil, handler: ModelsHandler? = nil) {
         // insert a new record
-        Records.adapter.insert(self.recordType().toRaw(), attributes: attributes, handler:{
-            record, error in
+        Records.adapter.insert(self.recordName, attributes: attributes, handler: {
+            records, error in
             // callback the handler with the generated model
             if let validHandler = handler {
-                validHandler(model: nil, error: error)
+                validHandler(nil, error)
+            }
+        })
+    }
+    
+    class func fetch(handler: ModelsHandler? = nil) {
+        Records.adapter.fetch(self.recordName, handler: {
+            records, error in
+            if let validHandler = handler {
+                validHandler(nil, error)
             }
         })
     }
     
     class func subscribe(predicate: NSPredicate? = NSPredicate(value: true), handler: SubscribeHandler? = nil) -> String! {
         // create a new subscription
-        return Records.adapter.subcribe(self.recordType().toRaw(), predicate: predicate, handler: {
+        return Records.adapter.subcribe(self.recordName, predicate: predicate, handler: {
             subscription, error in
             if let validHandler = handler {
-                validHandler(subscriptionID: "dummy", error: error)
+                validHandler("dummy", error)
             }
         })
     }
@@ -46,7 +50,7 @@ class Model : NSObject, AbstractModel {
             subscriptionID, error in
             // callback the handler with the error
             if let validHandler = handler {
-                validHandler(subscriptionID: subscriptionID, error: error)
+                validHandler(subscriptionID, error)
             }
         })
     }
@@ -54,10 +58,14 @@ class Model : NSObject, AbstractModel {
     class func recordType() -> RecordType {
         return .None
     }
+    
+    class var recordName : String {
+        return self.recordType().toRaw()
+    }
 
 }
 
-enum RecordType: String {
+enum RecordType : String {
     case None    = "None"
     case User    = "User"
     case Message = "Message"

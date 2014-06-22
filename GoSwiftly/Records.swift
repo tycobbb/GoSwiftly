@@ -11,14 +11,12 @@ class Records {
     var adapater : RecordAdapter!
 
     class var singleton : Records {
-        struct Static {
-            static let instance : Records = Records()
-        }
+        struct Static { static let instance : Records = Records() }
         return Static.instance
     }
     
+    // interface, want to extract this into an extension but compiler fails
     class var adapter : RecordAdapter! {
         return self.singleton.adapater
     }
-    
 }

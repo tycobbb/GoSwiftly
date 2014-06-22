@@ -19,17 +19,18 @@ import CloudKit
         application.registerUserNotificationSettings(notificationSettings)
         application.registerForRemoteNotifications()
 
-        CKContainer.defaultContainer().requestApplicationPermission(.PermissionUserDiscoverability) {
-            status, error in
-            println("application permission: \(status) error: \(error?.localizedDescription)")
-        }
-        
-        CKContainer.defaultContainer().accountStatusWithCompletionHandler {
-            status, error in
-            println("account status: \(status) error: \(error?.localizedDescription)")
-        }
-        
+        Logger.singleton.state     = LogState.Info
         Records.singleton.adapater = ParseAdapter()
+        
+//        CKContainer.defaultContainer().requestApplicationPermission(.PermissionUserDiscoverability) {
+//            status, error in
+//            println("application permission: \(status) error: \(error?.localizedDescription)")
+//        }
+//        
+//        CKContainer.defaultContainer().accountStatusWithCompletionHandler {
+//            status, error in
+//            println("account status: \(status) error: \(error?.localizedDescription)")
+//        }        
         
         return true
     }
