@@ -8,7 +8,7 @@
 
 class Records {
     
-    var adapater : RecordAdapter!
+    var _adapter : RecordAdapter!
 
     class var singleton : Records {
         struct Static { static let instance : Records = Records() }
@@ -17,6 +17,8 @@ class Records {
     
     // interface, want to extract this into an extension but compiler fails
     class var adapter : RecordAdapter! {
-        return self.singleton.adapater
+        get { return self.singleton._adapter }
+        set { self.singleton._adapter = newValue; self.singleton._adapter.initialize() }
     }
+    
 }

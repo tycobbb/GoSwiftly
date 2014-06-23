@@ -8,24 +8,20 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+class MainViewController : UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        println()
         
 //        User.fetch {
 //            users, error in
 //        }
         
-        let messageText = [ "GO", "YO", "WHOA" ].random()
-        
-        Message.subscribe(handler: {
-            subscriptionID, error in
+        Message.subscribe(handler: { subscriptionID, error in
 //            if let validError = error {
 //                Message.unsubscribe(subscriptionID)
 //            } else {
+                let messageText = [ "GO", "YO", "WHOA" ].random()
                 Message.insert(attributes: [ "text" : messageText ], handler: {
                     messages, error in
                 })

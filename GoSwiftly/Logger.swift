@@ -8,24 +8,31 @@
 
 extension Logger {
     
-    class func error(string: String) {
-        Logger.singleton.log(.Error, string: string)
+    class func error(message: String) {
+        Logger.singleton.log(.Error, string: message)
     }
     
-    class func warn(string: String) {
-        Logger.singleton.log(.Warn, string: string)
+    class func warn(message: String) {
+        Logger.singleton.log(.Warn, string: message)
     }
     
-    class func info(string: String) {
-        Logger.singleton.log(.Info, string: string)
+    class func info(message: String) {
+        Logger.singleton.log(.Info, string: message)
     }
     
-    class func debug(string: String) {
-        Logger.singleton.log(.Debug, string: string)
+    class func debug(message: String) {
+        Logger.singleton.log(.Debug, string: message)
     }
     
-    class func verbose(string: String) {
-        Logger.singleton.log(.Verbose, string: string)
+    class func verbose(message: String) {
+        Logger.singleton.log(.Verbose, string: message)
+    }
+    
+    class func check(error: NSError?, message: String?) {
+        if let validError = error {
+            let validMessage = message == nil ? "" : message
+            Logger.singleton.log(.Error, string: "\(validMessage) \(validError)")
+        }
     }
     
 }

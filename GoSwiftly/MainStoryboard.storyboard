@@ -7,7 +7,7 @@
         <!--Main View Controller-->
         <scene sceneID="wKq-qa-37t">
             <objects>
-                <viewController storyboardIdentifier="MainViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="IpR-S2-b45" customClass="MainViewController" customModule="GoSwiftly" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="IpR-S2-b45" customClass="MainViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="54v-1G-FvW"/>
                         <viewControllerLayoutGuide type="bottom" id="pma-tg-89E"/>
@@ -64,8 +64,8 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewLayout key="collectionViewLayout" id="24p-As-4kC" customClass="MessagesCollectionViewLayout"/>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MessagesCollectionViewCell" id="woH-81-u9C" customClass="MessagesCollectionViewCell" customModule="GoSwiftly" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MessagesCollectionViewCell" id="woH-81-u9C" customClass="MessagesCollectionViewCell">
+                                        <rect key="frame" x="30" y="0.0" width="80" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
@@ -93,7 +93,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Tm3-L3-j4u"/>
                     <connections>
-                        <outlet property="collectionView" destination="VMz-AV-B3G" id="02O-Ng-Jlj"/>
+                        <outlet property="collectionView" destination="VMz-AV-B3G" id="wTG-8E-7IC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VjC-vm-Ley" userLabel="First Responder" sceneMemberID="firstResponder"/>

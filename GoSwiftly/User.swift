@@ -6,8 +6,6 @@
 //  Copyright (c) 2014 Ty Cobb. All rights reserved.
 //
 
-import CloudKit
-
 class User : Model {
     
     override class func recordType() -> RecordType {

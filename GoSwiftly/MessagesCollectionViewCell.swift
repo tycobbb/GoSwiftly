@@ -68,9 +68,9 @@ class MessagesCollectionViewCell : CollectionViewCell, UIGestureRecognizerDelega
     // Data Binding
     //
     
-    var message : Message? { get {
+    var message : Message? {
         return self.model as? Message
-    }}
+    }
     
     override func updateWithModel(model: Model) {
         super.updateWithModel(model)

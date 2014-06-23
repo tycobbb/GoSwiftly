@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		10109FCD1957825C008F88E0 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10109FCC1957825C008F88E0 /* Logger.swift */; };
 		10109FCF19579135008F88E0 /* LogLevels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10109FCE19579135008F88E0 /* LogLevels.swift */; };
+		10166ECF1957D2E400CAEE0B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A2D12C193E4B6D00BADE64 /* MainViewController.swift */; };
 		101DAF391957A0A6005F4884 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101DAF381957A0A6005F4884 /* String.swift */; };
 		101DAF3B1957A4E0005F4884 /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101DAF3A1957A4E0005F4884 /* Formatter.swift */; };
 		107A4C43193FCF1900672204 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107A4C42193FCF1900672204 /* MessagesViewController.swift */; };
@@ -20,7 +21,6 @@
 		10A2D115193E4AC000BADE64 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10A2D114193E4AC000BADE64 /* Images.xcassets */; };
 		10A2D121193E4AC000BADE64 /* GoSwiftlyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A2D120193E4AC000BADE64 /* GoSwiftlyTests.swift */; };
 		10A2D12B193E4B4900BADE64 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10A2D12A193E4B4900BADE64 /* MainStoryboard.storyboard */; };
-		10A2D12D193E4B6D00BADE64 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A2D12C193E4B6D00BADE64 /* MainViewController.swift */; };
 		10A2D135193E4BD800BADE64 /* Arithmetic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A2D131193E4BD800BADE64 /* Arithmetic.swift */; };
 		10A2D136193E4BD800BADE64 /* Geometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A2D132193E4BD800BADE64 /* Geometry.swift */; };
 		10A2D137193E4BD800BADE64 /* Collections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A2D133193E4BD800BADE64 /* Collections.swift */; };
@@ -109,11 +109,19 @@
 		10109FCA19578242008F88E0 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				101DAF3C1957C00E005F4884 /* Logger */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
+		101DAF3C1957C00E005F4884 /* Logger */ = {
+			isa = PBXGroup;
+			children = (
 				10109FCC1957825C008F88E0 /* Logger.swift */,
 				101DAF3A1957A4E0005F4884 /* Formatter.swift */,
 				10109FCE19579135008F88E0 /* LogLevels.swift */,
 			);
-			name = Utilities;
+			name = Logger;
 			sourceTree = "<group>";
 		};
 		10A2D104193E4AC000BADE64 = {
@@ -143,8 +151,8 @@
 				10A2D12E193E4B9F00BADE64 /* Views */,
 				10A2D12F193E4BBB00BADE64 /* Models */,
 				10ADF1E31956291400D0FB9E /* Records */,
-				10A2D130193E4BC300BADE64 /* Extensions */,
 				10109FCA19578242008F88E0 /* Utilities */,
+				10A2D130193E4BC300BADE64 /* Extensions */,
 				10A2D110193E4AC000BADE64 /* Supporting Files */,
 				10A2D114193E4AC000BADE64 /* Images.xcassets */,
 				10C292C9193F888C00EA943D /* Test.playground */,
@@ -376,6 +384,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				10A2D13A193E4C3600BADE64 /* Model.swift in Sources */,
+				10166ECF1957D2E400CAEE0B /* MainViewController.swift in Sources */,
 				10ADF1EB1956339E00D0FB9E /* RecordAdapter.swift in Sources */,
 				10A1545C19410F0E0088308E /* MessagesCollectionViewLayout.swift in Sources */,
 				10A2D141193E5E0F00BADE64 /* CloudKit.swift in Sources */,
@@ -396,7 +405,6 @@
 				10109FCD1957825C008F88E0 /* Logger.swift in Sources */,
 				107A4C47193FD18B00672204 /* CollectionViewCell.swift in Sources */,
 				10B4D070193FAF76004B696C /* Functional.swift in Sources */,
-				10A2D12D193E4B6D00BADE64 /* MainViewController.swift in Sources */,
 				10A2D137193E4BD800BADE64 /* Collections.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

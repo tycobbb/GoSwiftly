@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import CloudKit
 
 @UIApplicationMain class AppDelegate: UIResponder, UIApplicationDelegate {
                             
@@ -24,7 +23,7 @@ import CloudKit
         Logger.info("logging state: \( Logger.singleton.formatter.label(forState: Logger.singleton.state) )")
         
         // configure services adapter
-        Records.singleton.adapater = ParseAdapter()
+        Records.adapter = ParseAdapter()
         
         return true
     }
@@ -46,8 +45,7 @@ import CloudKit
     }
     
     func application(application: UIApplication!, didReceiveRemoteNotification userInfo: NSDictionary!) {
-        var notification = CKNotification(fromRemoteNotificationDictionary: userInfo)
-        println("notification: \(notification)")
+        println("notification: \(userInfo)")
     }
 
 }

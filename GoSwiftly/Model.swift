@@ -6,9 +6,6 @@
 //  Copyright (c) 2014 Ty Cobb. All rights reserved.
 //
 
-import UIKit
-import CloudKit
-
 typealias ModelsHandler    = (Model[]?, NSError?) -> Void
 typealias SubscribeHandler = (String?, NSError?) -> Void
 
@@ -16,42 +13,33 @@ class Model : NSObject {
     
     class func insert(attributes: Dictionary<String, AnyObject>? = nil, handler: ModelsHandler? = nil) {
         // insert a new record
-        Records.adapter.insert(self.recordName, attributes: attributes, handler: {
-            records, error in
+        Records.adapter.insert(self.recordName, attributes: attributes, handler: { records, error in
+            Logger.check(error, message: "error inserting \(self.recordName)")
             // callback the handler with the generated model
-            if let validHandler = handler {
-                validHandler(nil, error)
-            }
+            handler?(nil, error)
         })
     }
     
     class func fetch(handler: ModelsHandler? = nil) {
-        Records.adapter.fetch(self.recordName, handler: {
-            records, error in
-            if let validHandler = handler {
-                validHandler(nil, error)
-            }
+        Records.adapter.fetch(self.recordName, handler: { records, error in
+            Logger.check(error, message: "error fetching \(self.recordName)")
+            handler?(nil, error)
         })
     }
     
     class func subscribe(predicate: NSPredicate? = NSPredicate(value: true), handler: SubscribeHandler? = nil) -> String! {
         // create a new subscription
-        return Records.adapter.subcribe(self.recordName, predicate: predicate, handler: {
-            subscription, error in
-            if let validHandler = handler {
-                validHandler("dummy", error)
-            }
+        return Records.adapter.subcribe(self.recordName, predicate: predicate, handler: { subscription, error in
+            Logger.check(error, message: "error subscribing to \(self.recordName)s")
+            handler?("dummy", error)
         })
     }
     
-    class func unsubscribe(subscriptionID: String, handler: SubscribeHandler? = nil) {
+    class func unsubscribe(subscriptionId: String, handler: SubscribeHandler? = nil) {
         // remove an existing subscription
-        Records.adapter.unsubscribe(subscriptionID, predicate: nil, handler: {
-            subscriptionID, error in
-            // callback the handler with the error
-            if let validHandler = handler {
-                validHandler(subscriptionID, error)
-            }
+        Records.adapter.unsubscribe(subscriptionId, predicate: nil, handler: { subscriptionID, error in
+            Logger.check(error, message: "error unsubscribing from <\(self.recordName): \(subscriptionId)>")
+            handler?(subscriptionId, error)
         })
     }
     

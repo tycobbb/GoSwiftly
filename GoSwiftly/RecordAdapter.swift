@@ -11,6 +11,7 @@ typealias RecordSubscribeHandler   = (AnyObject!, NSError!) -> Void
 typealias RecordUnsubscribeHandler = (String!, NSError!) -> Void
 
 @class_protocol protocol RecordAdapter {
+    func initialize()
     func insert(type: String, attributes: Dictionary<String, AnyObject>?, handler: RecordHandler?) -> Void
     func fetch(type: String, handler: RecordHandler?)
     func subcribe(recordType: String, predicate: NSPredicate!, handler: RecordSubscribeHandler?) -> String!
