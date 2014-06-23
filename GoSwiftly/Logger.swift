@@ -38,24 +38,16 @@ class Logger {
     }
     
     var state: LogState!
+    var formatter: AbstractFormatter = Formatter()
+    
+    //
+    // Logging
+    //
     
     func log(level: LogLevel, string: String) {
-        if(self.state & level != 0) {
-            println(formatString(string, forLevel: level))
-        }
-    }
-    
-    func formatString(string: String, forLevel level: LogLevel) -> String {
-        return "\( self.prefix(forLevel: level) ) \( string )"
-    }
-    
-    func prefix(forLevel level: LogLevel) -> String {
-        switch(level) {
-            case .Error:   return "ERROR:  "
-            case .Warn:    return "WARN:   "
-            case .Info:    return "INFO:   "
-            case .Debug:   return "DEBUG:  "
-            case .Verbose: return "VERBOSE:"
+        if(self.state.containsLevel(level)) {
+            var message = self.formatter.formatString(string, forLevel: level)
+            println(message)
         }
     }
     

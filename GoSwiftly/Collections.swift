@@ -8,12 +8,6 @@
 
 import Foundation
 
-extension String {
-    var length: Int { get {
-        return countElements(self)
-    } }
-}
-
 extension Array {
     
     func random() -> T {

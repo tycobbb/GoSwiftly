@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		10109FCD1957825C008F88E0 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10109FCC1957825C008F88E0 /* Logger.swift */; };
 		10109FCF19579135008F88E0 /* LogLevels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10109FCE19579135008F88E0 /* LogLevels.swift */; };
+		101DAF391957A0A6005F4884 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101DAF381957A0A6005F4884 /* String.swift */; };
+		101DAF3B1957A4E0005F4884 /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101DAF3A1957A4E0005F4884 /* Formatter.swift */; };
 		107A4C43193FCF1900672204 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107A4C42193FCF1900672204 /* MessagesViewController.swift */; };
 		107A4C45193FD10500672204 /* MessagesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107A4C44193FD10500672204 /* MessagesCollectionViewCell.swift */; };
 		107A4C47193FD18B00672204 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107A4C46193FD18B00672204 /* CollectionViewCell.swift */; };
@@ -48,6 +50,8 @@
 /* Begin PBXFileReference section */
 		10109FCC1957825C008F88E0 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		10109FCE19579135008F88E0 /* LogLevels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogLevels.swift; sourceTree = "<group>"; };
+		101DAF381957A0A6005F4884 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		101DAF3A1957A4E0005F4884 /* Formatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
 		107A4C42193FCF1900672204 /* MessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
 		107A4C44193FD10500672204 /* MessagesCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesCollectionViewCell.swift; sourceTree = "<group>"; };
 		107A4C46193FD18B00672204 /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
@@ -106,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				10109FCC1957825C008F88E0 /* Logger.swift */,
+				101DAF3A1957A4E0005F4884 /* Formatter.swift */,
 				10109FCE19579135008F88E0 /* LogLevels.swift */,
 			);
 			name = Utilities;
@@ -208,6 +213,7 @@
 				10A2D133193E4BD800BADE64 /* Collections.swift */,
 				10A2D134193E4BD800BADE64 /* Colors.swift */,
 				10B4D06F193FAF76004B696C /* Functional.swift */,
+				101DAF381957A0A6005F4884 /* String.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -378,9 +384,11 @@
 				107A4C45193FD10500672204 /* MessagesCollectionViewCell.swift in Sources */,
 				10ADF1E51956294100D0FB9E /* Records.swift in Sources */,
 				10ADF1E71956298C00D0FB9E /* ParseAdapter.swift in Sources */,
+				101DAF3B1957A4E0005F4884 /* Formatter.swift in Sources */,
 				10A2D136193E4BD800BADE64 /* Geometry.swift in Sources */,
 				107A4C491940BB8A00672204 /* CollectionView.swift in Sources */,
 				10A2D13C193E4C6200BADE64 /* User.swift in Sources */,
+				101DAF391957A0A6005F4884 /* String.swift in Sources */,
 				107A4C43193FCF1900672204 /* MessagesViewController.swift in Sources */,
 				10A2D113193E4AC000BADE64 /* AppDelegate.swift in Sources */,
 				10109FCF19579135008F88E0 /* LogLevels.swift in Sources */,

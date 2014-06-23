@@ -26,11 +26,27 @@ struct LogState : RawOptionSet {
     
     var value: UInt = 0
     
+    //
+    // Values
+    //
+    
     static var Error:   LogState { return LogState(LogLevel.Error) }
     static var Warn:    LogState { return LogState(LogState.Error | LogLevel.Warn)    }
     static var Info:    LogState { return LogState(LogState.Warn  | LogLevel.Info)    }
     static var Debug:   LogState { return LogState(LogState.Info  | LogLevel.Debug)   }
     static var Verbose: LogState { return LogState(LogState.Debug | LogLevel.Verbose) }
+    
+    //
+    // Utility functions
+    //
+    
+    func containsLevel(level: LogLevel) -> Bool {
+        return self & level != 0
+    }
+    
+    //
+    // Crufty RawOptionSet conformance
+    //
     
     init(_ value: LogLevel) { self.value = value.toRaw() }
     init(_ value: UInt) { self.value = value }

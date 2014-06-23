@@ -19,18 +19,12 @@ import CloudKit
         application.registerUserNotificationSettings(notificationSettings)
         application.registerForRemoteNotifications()
 
-        Logger.singleton.state     = LogState.Info
-        Records.singleton.adapater = ParseAdapter()
+        // configure the logger
+        Logger.singleton.state = LogState.Info
+        Logger.info("logging state: \( Logger.singleton.formatter.label(forState: Logger.singleton.state) )")
         
-//        CKContainer.defaultContainer().requestApplicationPermission(.PermissionUserDiscoverability) {
-//            status, error in
-//            println("application permission: \(status) error: \(error?.localizedDescription)")
-//        }
-//        
-//        CKContainer.defaultContainer().accountStatusWithCompletionHandler {
-//            status, error in
-//            println("account status: \(status) error: \(error?.localizedDescription)")
-//        }        
+        // configure services adapter
+        Records.singleton.adapater = ParseAdapter()
         
         return true
     }
